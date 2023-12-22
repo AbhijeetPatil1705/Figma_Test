@@ -1,0 +1,40 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  background-color: darkblue;
+  border-radius: 20px;
+  color: aliceblue;
+  font-size: large;
+  font-weight: 600;
+}
+.password{
+  color: red;
+  cursor: pointer;
+}
+.tittle {
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.toolbar-footer {
+  background-color: brown;
+  border-radius: 40px;
+  font-size: large;
+  font-weight: 600;
+  color: aliceblue;
+}
+
+.loginBtn {
+  margin-top: 20px;
+  float: left;
+}
+
+.btn {
+  padding-right: 60px;
+  border-radius: 50px;
+  background-color: darkblue;
+  color: aliceblue;
+  font-weight: 600;
+}

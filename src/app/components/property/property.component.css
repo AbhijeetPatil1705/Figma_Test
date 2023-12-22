@@ -1,0 +1,76 @@
+.btnBack {
+  margin: 10px;
+  padding: 6px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  color: black;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btnSubmit {
+  padding-right: 50px;
+  border-radius: 50px;
+  background-color: darkblue;
+  color: aliceblue;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.file-container {
+  width: 400px;
+  height: 100PX;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.file {
+  opacity: 0;
+  padding: 5rem;
+  height: 5rem;
+  width: auto;
+  cursor: pointer;
+}
+
+.star-rating {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star-rating span {
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star-rating span.full {
+  color: gold;
+}
+.bi-upload{
+  cursor: pointer;
+}
+.required-asterisk{
+  color: red;
+}
+.bd-navbar {
+  background-color: #FFFFFF;
+  color: black;
+  border: 2px solid purple;
+  height: 70px;
+}
+
+.cd-navbar {
+  color: black;
+}
+.name-content{
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.userName{
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
+  padding: 0;
+  margin: 0;
+}

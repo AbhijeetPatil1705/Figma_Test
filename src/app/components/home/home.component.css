@@ -1,0 +1,58 @@
+.btnProperty{
+    padding: 10px;
+    border-radius: 50px;
+    background-color: darkblue;
+    color: aliceblue;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .tittle{
+    display: flex;
+    justify-content: space-around;
+  }
+  .tableContainer{
+    margin-top: 40px;
+  }
+.btnStatus{
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+.edit{
+  cursor: pointer;
+  padding: 2px 5px 2px 5px;
+  font-size: 25px;
+  text-align: center;
+  background-color: blue;
+  color: rgb(255, 255, 255);
+}
+.bd-navbar {
+  background-color: #FFFFFF;
+  color: black;
+  border: 2px solid purple;
+  height: 70px;
+}
+
+.cd-navbar {
+  color: black;
+}
+.elseBlock{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.name-content{
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.userName{
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
+  padding: 0;
+  margin: 0;
+}

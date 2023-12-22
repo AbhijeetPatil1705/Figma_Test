@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-lg bd-navbar">
+    <a class="navbar-brand cd-navbar" href="#">Customer Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">Accounts <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">Properties</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">Payments</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">Mail Box</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">My Documents</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link cd-navbar" href="#">Contact Us</a>
+            </li>
+        </ul>
+        <div>
+            <a class="nav-item col-6 col-lg-auto">
+                <i class="bi bi-bell"></i>
+            </a>
+            <a class="nav-item col-6 col-lg-auto">
+                <i class="bi bi-chat"></i> Chat
+            </a>
+        </div>
+        <div>
+            <div class="userName">{{userName}}</div>
+            <span class="name-content">Last connection:</span>
+            <p class="name-content">{{CurrentDate | date}}</p>
+        </div>&nbsp;&nbsp;
+        <ul class="navbar-nav ms-auto">
+
+            <li class="nav-item">
+                <img src="/assets/steve-jobs.jpg" alt="steve-jobs" class="rounded-circle"
+                    style="width: 60px; height: 60px; object-fit: cover;">
+            </li>
+        </ul>
+    </div>
+</nav>&nbsp;
+<div class="container">
+    <mat-toolbar>
+        <button type="button" class="btnBack" routerLink="/home"><i class="bi bi-backspace"></i> Back</button>
+    </mat-toolbar>&nbsp;
+    <div>
+        <div class="col-md-12">
+            <h6 style="color: red;">New Property</h6>
+        </div>
+        <div class="col-md-12">
+            <p>Please add new property details</p>
+        </div>
+        <form [formGroup]="propertyForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="file-container" *ngIf="!file">
+                        <label for="fileInput" class="file-input-label">
+                            <span class="d-flex justify-content-center align-items-center"><i
+                                    class="bi bi-upload p-1 m-1"></i>Drag and Drop Image here..</span>
+                            <input type="file" class="file" (change)="getFile($event)" accept="image/*" />
+                        </label>
+                    </div>
+                    <div *ngIf="file">
+                        File Name: {{file.name}}
+                        <button type="button" class="btn btn-warning" (click)="file=undefined">Clear file</button>
+                    </div>
+                </div>&nbsp;
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-warning" (click)="uploadDocs()">Upload</button>
+                </div>&nbsp;
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputEmail4">Amount <span class="required-asterisk">*</span></label>
+                    <input type="number" class="form-control" placeholder="Amount" formControlName="amount">
+                    <div *ngIf="propertyForm.get('amount')?.touched">
+                        <small style="color: red;" *ngIf="propertyForm.get('amount')?.errors?.['required']">Amount is
+                            required</small>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Category <span class="required-asterisk">*</span></label>
+                    <select id="inputState" class="form-control" formControlName="property">
+                        <option selected>Select Property Type...</option>
+                        <option *ngFor="let property of propertyName" [value]="property">{{property}}</option>
+                    </select>
+                    <div *ngIf="propertyForm.get('property')?.touched">
+                        <small style="color: red;" *ngIf="propertyForm.get('property')?.errors?.['required']">Property
+                            is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputEmail4">Feedback <span class="required-asterisk">*</span></label>
+                    <div class="star-rating">
+                        <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="rateStar(star)"
+                            [class.full]="star <= rating">&#9733;</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Status <span class="required-asterisk">*</span></label>
+                    <select id="inputState" class="form-control" formControlName="status">
+                        <option selected>Select Status...</option>
+                        <option *ngFor="let status of statusName" [value]="status">{{status}}</option>
+                    </select>
+                    <div *ngIf="propertyForm.get('status')?.touched">
+                        <small style="color: red;" *ngIf="propertyForm.get('status')?.errors?.['required']">Status is
+                            required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="loginBtn">
+                <button type="button" class="btn btn-success"
+                    (click)="onSubmitProperty(propertyForm.value)" [disabled]="propertyForm.invalid">{{!this.receivedData?'Submit':'Update'}}</button>&nbsp;
+            </div>
+        </form>
+    </div>
+</div>&nbsp;

@@ -1,0 +1,92 @@
+<div>
+  <nav class="navbar navbar-expand-lg bd-navbar">
+    <a class="navbar-brand cd-navbar" href="#">Customer Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">Accounts <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">Properties</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">Payments</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">Mail Box</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">My Documents</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link cd-navbar" href="#">Contact Us</a>
+        </li>
+      </ul>
+      <div>
+        <a class="nav-item col-6 col-lg-auto">
+          <i class="bi bi-bell"></i>
+        </a>
+        <a class="nav-item col-6 col-lg-auto">
+          <i class="bi bi-chat"></i> Chat
+        </a>
+      </div>
+      <div>
+        <div class="userName">{{userName}}</div>
+        <span class="name-content">Last connection:</span>
+        <p class="name-content">{{CurrentDate | date}}</p>
+      </div>&nbsp;&nbsp;
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <img src="/assets/steve-jobs.jpg" alt="steve-jobs" class="rounded-circle"
+            style="width: 60px; height: 60px; object-fit: cover;">
+        </li>
+      </ul>
+    </div>
+  </nav>&nbsp;
+  <div class="container">
+    <div class="tittle">
+      <p>Hello <span style="color: red;">{{userName}}</span></p>
+      <button type="button" class="btnProperty" routerLink="/property">Add Property <i
+          class="bi bi-cart-plus"></i></button>
+    </div>
+    <div class="tableContainer" *ngIf="homeTableData.length > 0 else elseBlock">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Posted Date</th>
+            <th scope="col">Image</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Category</th>
+            <th scope="col">Reviews</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of homeTableData; let i = index">
+            <td>{{data.postedDate | date:'shortDate'}}</td>
+            <td>
+              <img [src]="data.imagee" alt="Selected Image" width="50" height="50">
+            </td>
+            <td>{{data.amount | currency:'INR':'symbol':'1.2-2'}}</td>
+            <td>{{data.property}}</td>
+            <td>
+              <app-ratings [selectedRating]="data.rating"></app-ratings>
+            </td>
+            <td><button type="button" class="btnStatus"
+                [style.backgroundColor]="getButtonStyles(data.status)">{{data.status}}</button></td>
+            <td><i class="bi bi-pencil-square edit" (click)="editRecord(data, i)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #elseBlock>
+      <div class="elseBlock">No Records Found</div>
+    </ng-template>
+  </div>
+</div>
